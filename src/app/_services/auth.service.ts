@@ -38,7 +38,7 @@ export class AuthService {
   register(name: string, email: string, password: string) {
     // Send data to register API (Firebase)
     return this.http.post<{ idToken: string }>(
-      'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAglX9UIc5HybPERz2PvSlIIB9VWRaesgQ',
+      'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[APIKEY]',
       { displayName: name, email, password }
     );
   }
@@ -52,7 +52,7 @@ export class AuthService {
   login(email: string, password: string) {
     // Send data to login API (Firebase)
     return this.http.post<{ idToken: string }>(
-      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAglX9UIc5HybPERz2PvSlIIB9VWRaesgQ',
+      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[APIKEY]',
       { email, password }
     );
   }
@@ -61,7 +61,7 @@ export class AuthService {
     if (isPlatformBrowser(this.platformId)) { // Check if running in the browser
       let token = sessionStorage.getItem('token');
       return this.http.post<{ users: Array<{ localId: string, displayName: string }> }>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyAglX9UIc5HybPERz2PvSlIIB9VWRaesgQ',
+        'https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=[APIKEY]',
         { idToken: token }
       );
     }
